@@ -31,6 +31,7 @@
             android:text="Insert"
             android:textColor="@color/white"
             android:background="@color/lightcoral"
+            android:layout_below="@id/btGet"
             tools:ignore="ButtonStyle,HardcodedText" />
 
         <Button
@@ -40,6 +41,7 @@
             android:text="Update"
             android:textColor="@color/white"
             android:background="@color/lightcoral"
+            android:layout_below="@id/btInsert"
             tools:ignore="ButtonStyle,HardcodedText" />
 
         <Button
@@ -49,7 +51,12 @@
             android:text="Delete"
             android:textColor="@color/white"
             android:background="@color/lightcoral"
+            android:layout_below="@id/btUpdate"
             tools:ignore="ButtonStyle,HardcodedText" />
 
 </LinearLayout>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
 </LinearLayout>

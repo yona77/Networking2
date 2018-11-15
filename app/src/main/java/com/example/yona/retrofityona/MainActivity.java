@@ -2,10 +2,13 @@ package com.example.yona.retrofityona;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.yona.retrofityona.Adapter.MyAdapter;
 import com.example.yona.retrofityona.Model.GetPembelian;
 import com.example.yona.retrofityona.Model.Pembelian;
 import com.example.yona.retrofityona.Model.PostPutDelPembelian;
@@ -23,6 +26,10 @@ public class MainActivity extends AppCompatActivity {
     Button btGet, btUpdate, btInsert, btDelete;
     ApiInterface mApiInterface;
 
+    private RecyclerView mRecyclerView;
+    private RecyclerView.Adapter mAdapter;
+    private RecyclerView.LayoutManager mLayoutManager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +39,10 @@ public class MainActivity extends AppCompatActivity {
         btUpdate = (Button) findViewById(R.id.btUpdate);
         btInsert = (Button) findViewById(R.id.btInsert);
         btDelete = (Button) findViewById(R.id.btDelete);
+
+        mRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+        mLayoutManager = new LinearLayoutManager(this);
+        mRecyclerView.setLayoutManager(mLayoutManager);
 
         mApiInterface = ApiClient.getClient().create(ApiInterface.class);
         btGet.setOnClickListener(new View.OnClickListener() {
@@ -43,6 +54,9 @@ public class MainActivity extends AppCompatActivity {
                     public void onResponse(retrofit2.Call<GetPembelian> call, Response<GetPembelian> response) {
                         List<Pembelian> pembelianList = response.body().getListDataPembelian();
                         Log.d("Retrofit Get", "Jumlah data Pembelian : " + String.valueOf(pembelianList.size()));
+
+                        mAdapter = new MyAdapter(pembelianList);
+                        mRecyclerView.setAdapter(mAdapter);
                     }
 
                     @Override
