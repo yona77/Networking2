@@ -23,7 +23,7 @@ import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button btGet, btUpdate, btInsert, btDelete;
+    Button btGet;
     ApiInterface mApiInterface;
 
     private RecyclerView mRecyclerView;
@@ -34,11 +34,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         btGet = (Button) findViewById(R.id.btGet);
-        btUpdate = (Button) findViewById(R.id.btUpdate);
-        btInsert = (Button) findViewById(R.id.btInsert);
-        btDelete = (Button) findViewById(R.id.btDelete);
 
         mRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         mLayoutManager = new LinearLayoutManager(this);
@@ -48,78 +44,26 @@ public class MainActivity extends AppCompatActivity {
         btGet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                retrofit2.Call<GetPembelian> pembelianCall = mApiInterface.getPembelian();
+                Call<GetPembelian> pembelianCall = mApiInterface.getPembelian();
                 pembelianCall.enqueue(new Callback<GetPembelian>() {
                     @Override
-                    public void onResponse(retrofit2.Call<GetPembelian> call, Response<GetPembelian> response) {
+                    public void onResponse(Call<GetPembelian> call, Response<GetPembelian> response) {
                         List<Pembelian> pembelianList = response.body().getListDataPembelian();
-                        Log.d("Retrofit Get", "Jumlah data Pembelian : " + String.valueOf(pembelianList.size()));
+                        Log.d("Retrofit Get", "Jumlah data pembelian: " +
+                                String.valueOf(pembelianList.size()));
+
 
                         mAdapter = new MyAdapter(pembelianList);
                         mRecyclerView.setAdapter(mAdapter);
                     }
-
                     @Override
-                    public void onFailure(retrofit2.Call<GetPembelian> call, Throwable t) {
-                        //Log eror
+                    public void onFailure(Call<GetPembelian> call, Throwable t) {
+// Log error
                         Log.e("Retrofit Get", t.toString());
-                    }
-                });
-            }
-        });
-
-        btUpdate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                retrofit2.Call<PostPutDelPembelian> updatePembelianCall = mApiInterface.putPembelian("17", "7", "2018-11-15", "500000", "11");
-                updatePembelianCall.enqueue(new Callback<PostPutDelPembelian>() {
-                    @Override
-                    public void onResponse(retrofit2.Call<PostPutDelPembelian> call, Response<PostPutDelPembelian> response) {
-                        Log.d("Retrofit Update", "Status Update : " + String.valueOf(response.body().getStatus()));
-                    }
-
-                    @Override
-                    public void onFailure(retrofit2.Call<PostPutDelPembelian> call, Throwable t) {
-                        Log.d("Retrofit Update", t.getMessage());
-                    }
-                });
-            }
-        });
-
-        btInsert.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                retrofit2.Call<PostPutDelPembelian> postPutDelPembelianCall = mApiInterface.postPembelian("17", "7", "2018-11-15", "500000", "11");
-                postPutDelPembelianCall.enqueue(new Callback<PostPutDelPembelian>() {
-                    @Override
-                    public void onResponse(retrofit2.Call<PostPutDelPembelian> call, Response<PostPutDelPembelian> response) {
-                        Log.d("Retrofit Insert", "Status Insert : " + String.valueOf(response.body().getStatus()));
-                    }
-
-                    @Override
-                    public void onFailure(retrofit2.Call<PostPutDelPembelian> call, Throwable t) {
-                        Log.d("Retrofit Insert", t.getMessage());
-                    }
-                });
-            }
-        });
-
-        btDelete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                retrofit2.Call<PostPutDelPembelian> deletePembelian = mApiInterface.deletePembelian("17");
-                deletePembelian.enqueue(new Callback<PostPutDelPembelian>() {
-                    @Override
-                    public void onResponse(retrofit2.Call<PostPutDelPembelian> call, Response<PostPutDelPembelian> response) {
-                        Log.i("Retrofit Delete", "Status Delete : " + String.valueOf(response.body().getStatus()));
-                    }
-
-                    @Override
-                    public void onFailure(retrofit2.Call<PostPutDelPembelian> call, Throwable t) {
-                        Log.i("Retrofit Delete", t.getMessage());
                     }
                 });
             }
         });
     }
 }
+
