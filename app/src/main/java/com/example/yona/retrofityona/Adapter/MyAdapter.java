@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
 import com.example.yona.retrofityona.Model.Pembelian;
 import com.example.yona.retrofityona.R;
 import com.example.yona.retrofityona.LayarDetail;
@@ -27,20 +26,13 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     }
     @Override
     public void onBindViewHolder(MyViewHolder holder, final int position) {
-        holder.mTextViewIdPembelian.setText("Id Pembelian : " +
-                mPembelianList.get(position)
-                        .getId_pembelian());
-        holder.mTextViewIdPembeli.setText("Id Pembeli : " + mPembelianList.get(position)
-                .getId_pembeli());
-        holder.mTextViewIdTiket.setText("Id Tiket : " +
-                mPembelianList.get(position).getId_tiket
-                        ());
-        holder.mTextViewTanggal.setText("Tanggal Beli : " + mPembelianList.get(position)
-                .getTanggal_beli());
-        holder.mTextViewTotalHarga.setText("Total Harga : " +
-                String.valueOf(mPembelianList.get
-                        (position).getTotal_harga()));
+        holder.mTextViewIdPembelian.setText("Id Pembelian : " + mPembelianList.get(position).getId_pembelian());
+        holder.mTextViewIdPembeli.setText("Id Pembeli : " + mPembelianList.get(position).getId_pembeli());
+        holder.mTextViewIdTiket.setText("Id Tiket : " + mPembelianList.get(position).getId_tiket());
+        holder.mTextViewTanggal.setText("Tanggal Beli : " + mPembelianList.get(position).getTanggal_beli());
+        holder.mTextViewTotalHarga.setText("Total Harga : " + String.valueOf(mPembelianList.get(position).getTotal_harga()));
         holder.itemView.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View view) {
                 Intent mIntent =  new Intent(view.getContext(), LayarDetail.class);
@@ -53,20 +45,20 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
             }
         });
     }
+
     @Override
     public int getItemCount() {
         return mPembelianList.size();
     }
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        public TextView mTextViewIdPembelian, mTextViewIdPembeli,
-                mTextViewTanggal,mTextViewIdTiket,mTextViewTotalHarga;
+        public TextView mTextViewIdPembelian, mTextViewIdPembeli, mTextViewTanggal, mTextViewIdTiket, mTextViewTotalHarga;
         public MyViewHolder(View itemView) {
             super(itemView);
-            mTextViewIdPembelian    = (TextView) itemView.findViewById(R.id.tvIdPembelian);
-            mTextViewIdPembeli      = (TextView) itemView.findViewById(R.id.tvIdPembeli);
-            mTextViewTanggal        = (TextView) itemView.findViewById(R.id.tvTanggalBeli);
-            mTextViewIdTiket        = (TextView) itemView.findViewById(R.id.tvIdTiket);
-            mTextViewTotalHarga     = (TextView) itemView.findViewById(R.id.tvTotalHarga);
+            mTextViewIdPembelian = (TextView) itemView.findViewById(R.id.tvIdPembelian);
+            mTextViewIdPembeli   = (TextView) itemView.findViewById(R.id.tvIdPembeli);
+            mTextViewTanggal     = (TextView) itemView.findViewById(R.id.tvTanggalBeli);
+            mTextViewIdTiket     = (TextView) itemView.findViewById(R.id.tvIdTiket);
+            mTextViewTotalHarga  = (TextView) itemView.findViewById(R.id.tvTotalHarga);
         }
     }
 }

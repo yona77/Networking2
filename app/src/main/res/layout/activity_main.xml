@@ -1,62 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/dark"
     android:padding="10dp">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginBottom="16dp"
-        tools:ignore="UselessParent">
+        android:layout_marginBottom="16dp">
+
+        <TextView
+            android:id="@+id/judul"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Aplikasi Pembelian"
+            android:layout_alignParentStart="true"
+            android:gravity="center"
+            android:textSize="8pt"
+            android:layout_margin="5pt"
+            android:layout_alignParentLeft="true" />
 
         <Button
             android:id="@+id/btGet"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/lightcoral"
-            android:text="Get"
-            android:textColor="@color/white"
-            tools:ignore="ButtonStyle,HardcodedText" />
-
-        <Button
-            android:id="@+id/btInsert"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Insert"
-            android:textColor="@color/white"
-            android:background="@color/lightcoral"
-            android:layout_below="@id/btGet"
-            tools:ignore="ButtonStyle,HardcodedText" />
+            android:layout_below="@+id/judul"
+            android:text="Get"/>
+    </RelativeLayout>
 
-        <Button
-            android:id="@+id/btUpdate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Update"
-            android:textColor="@color/white"
-            android:background="@color/lightcoral"
-            android:layout_below="@id/btInsert"
-            tools:ignore="ButtonStyle,HardcodedText" />
-
-        <Button
-            android:id="@+id/btDelete"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Delete"
-            android:textColor="@color/white"
-            android:background="@color/lightcoral"
-            android:layout_below="@id/btUpdate"
-            tools:ignore="ButtonStyle,HardcodedText" />
-
-</LinearLayout>
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerView"
+        android:scrollbars="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
+        android:layout_height="match_parent">
+    </android.support.v7.widget.RecyclerView>
+
 </LinearLayout>

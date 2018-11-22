@@ -14,6 +14,7 @@ import retrofit2.Call;
 import retrofit2.Response;
 
 public class LayarDetail extends AppCompatActivity {
+
         EditText edtIdPembelian, edtIdPembeli, edtTanggalBeli, edtIdTiket, edtTotalHarga;
         Button btInsert, btUpdate, btDelete, btBack;
         TextView tvMessage;
@@ -60,8 +61,7 @@ public void onClick(View view) {
     @Override
     public void onResponse(Call<PostPutDelPembelian> call,
         Response<PostPutDelPembelian> response) {
-        tvMessage.setText(" Retrofit Update: " +
-        "\n " + " Status Update : " +response.body().getStatus() + "\n " + " Message Update : "+ response.body().getMessage());
+        tvMessage.setText(" Retrofit Update: " + "\n " + " Status Update : " +response.body().getStatus() + "\n " + " Message Update : "+ response.body().getMessage());
         }
 
     @Override
