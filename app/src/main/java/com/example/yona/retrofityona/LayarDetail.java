@@ -75,34 +75,35 @@ public void onClick(View view) {
 
             @Override
             public void onClick(View view) {
-            Call<PostPutDelPembelian> postPembelianCall =
-            mApiInterface.postPembelian(
-            edtIdPembelian.getText().toString(),
-            edtIdPembeli.getText().toString(),
-            edtTanggalBeli.getText().toString(),
-            edtTotalHarga.getText().toString(),
-            edtIdTiket.getText().toString());
-        postPembelianCall.enqueue(new Callback<PostPutDelPembelian>() {
+                Call<PostPutDelPembelian> postPembelianCall =
+                        mApiInterface.postPembelian(
+                                edtIdPembelian.getText().toString(),
+                                edtIdPembeli.getText().toString(),
+                                edtTanggalBeli.getText().toString(),
+                                edtTotalHarga.getText().toString(),
+                                edtIdTiket.getText().toString());
+                postPembelianCall.enqueue(new Callback<PostPutDelPembelian>() {
 
-    @Override
-    public void onResponse(Call<PostPutDelPembelian> call,
-        Response<PostPutDelPembelian> response) {
-        tvMessage.setText(" Retrofit Insert: " + "\n " + " Status Insert : " + response.body().getStatus() + "\n " + " Message Insert : "+ response.body().getMessage());
-        }
+                    @Override
+                    public void onResponse(Call<PostPutDelPembelian> call,
+                                           Response<PostPutDelPembelian> response) {
+                        tvMessage.setText(" Retrofit Insert: " + "\n " + " Status Insert : " + response.body().getStatus() + "\n " + " Message Insert : " + response.body().getMessage());
+                    }
 
-    @Override
-    public void onFailure(Call<PostPutDelPembelian> call, Throwable t) {
-        tvMessage.setText("Retrofit Insert: \n Status Insert :"+ t.getMessage()); }
-        });
+                    @Override
+                    public void onFailure(Call<PostPutDelPembelian> call, Throwable t) {
+                        tvMessage.setText("Retrofit Insert: \n Status Insert :" + t.getMessage());
+                    }
+                });
             }
         });
         btDelete.setOnClickListener(new View.OnClickListener() {
-
-    @Override
-    public void onClick(View view) {
-        if (!edtIdPembelian.getText().toString().trim().isEmpty()){
-        Call<PostPutDelPembelian> deletePembelian = mApiInterface.deletePembelian(edtIdPembelian.getText().toString());
-        deletePembelian.enqueue(new Callback<PostPutDelPembelian>() {
+            @Override
+            public void onClick(View view) {
+                if (!edtIdPembelian.getText().toString().trim().isEmpty()){
+                    Call<PostPutDelPembelian> deletePembelian =
+                            mApiInterface.deletePembelian(edtIdPembelian.getText().toString());
+                    deletePembelian.enqueue(new Callback<PostPutDelPembelian>() {
 
     @Override
     public void onResponse(Call<PostPutDelPembelian> call,
@@ -112,21 +113,21 @@ public void onClick(View view) {
 
     @Override
     public void onFailure(Call<PostPutDelPembelian> call, Throwable t) {
-        tvMessage.setText("Retrofit Delete: \n Status Delete :"+ t.getMessage()); }
+        tvMessage.setText("Retrofit Delete: \n Status Delete :"+ t.getMessage());
+    }
         });
-        }
+                }
         else{
         tvMessage.setText("id_pembelian harus diisi");
         }
     }
         });
         btBack.setOnClickListener(new View.OnClickListener() {
-
             @Override
-        public void onClick(View view) {
-        Intent mIntent = new Intent(getApplicationContext(), MainActivity.class);
-        startActivity(mIntent); }
+            public void onClick(View view) {
+                Intent mIntent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(mIntent);
+            }
         });
     }
 }
-

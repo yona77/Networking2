@@ -1,29 +1,40 @@
 package com.example.yona.retrofityona.Model;
-import com.google.gson.annotations.SerializedName;
 
-public class PostPutDelPembelian {
+import com.google.gson.annotations.SerializedName;
+import java.util.ArrayList;
+import java.util.List;
+
+public class GetPembeli {
     @SerializedName("status")
-    String status;
+    private String status;
+
     @SerializedName("result")
-    Pembelian mPembelian;
+    private List<Pembeli> result = new ArrayList<Pembeli>();
+
     @SerializedName("message")
-    String message;
+    private String message;
+
+    public GetPembeli() {}
+
     public String getStatus() {
         return status;
     }
     public void setStatus(String status) {
         this.status = status;
     }
+
+    public List<Pembeli> getResult() {
+        return result;
+    }
+    public void setResult(List<Pembeli> result) {
+        this.result = result;
+    }
+
     public String getMessage() {
         return message;
     }
     public void setMessage(String message) {
         this.message = message;
     }
-    public Pembelian getPembelian() {
-        return mPembelian;
-    }
-    public void setPembelian(Pembelian pembelian) {
-        mPembelian = pembelian;
-    }
 }
+

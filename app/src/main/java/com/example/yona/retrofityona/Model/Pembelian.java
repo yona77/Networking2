@@ -56,7 +56,6 @@ public class Pembelian {
     public String getId_tiket() {
         return id_tiket;
     }
-
     public void setId_tiket(String id_tiket) {
         this.id_tiket = id_tiket;
     }

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="imgPhotoId" type="id" />
+    <item name="edtNamaPembeli" type="id" />
+    <item name="edtAlamatPembeli" type="id" />
+    <item name="edtTelpPembeli" type="id" />
+    <item name="tvMessage" type="id" />
+    <item name="btPhotoId" type="id" />
+    <item name="menuTambahTransPembelian" type="id" />
+    <item name="menuListPembeli" type="id" />
+    <item name="menuInsertDataPembeli" type="id" />
+</resources>
